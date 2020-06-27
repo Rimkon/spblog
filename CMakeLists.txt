@@ -5,9 +5,13 @@ cmake_minimum_required ( VERSION 3.5 )
 
           #find_package (  spdlog  REQUIRED )
           find_package ( Threads  REQUIRED )
-          find_package (   Boost  COMPONENTS unit_test_framework REQUIRED )
+         find_package (   Boost  COMPONENTS unit_test_framework REQUIRED )
 
-        add_executable ( hello_cli   main.cpp )
+        # find_package ( Boost 1.65.1 REQUIRED)
+  include_directories ( SYSTEM ${Boost_INCLUDE_DIRS})
+target_link_libraries ( myapp ${Boost_LIBRARIES})
+
+add_executable ( hello_cli   main.cpp )
 
  set_target_properties ( hello_cli
                          PROPERTIES
